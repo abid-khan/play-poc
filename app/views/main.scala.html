@@ -1,0 +1,30 @@
+@(title: String, user:User, rules : List[Rule])(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>@title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <script src="@routes.Assets.at("javascripts/hello.js")" type="text/javascript"></script>
+    </head>
+	    <body>
+	     <dl id="user">
+		    <dt>@user.name <span>(@user.email)</span></dt>
+		    <dd>
+		        <a href="@routes.Application.logout()">Logout</a>
+		    </dd>
+		</dl>
+    
+        @content
+        
+        <br/>
+        <ul>
+        	@for(rule <-rules){
+        		<li>@rule.name</li>
+        	}
+        </ul>
+        
+    </body>
+</html>
